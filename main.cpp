@@ -411,9 +411,9 @@ void encontraMaiorPalavra(){
     // Leia uma frase do usuário usando cin e armazene-a em frase. 
     // Encontre a palavra mais longa da frase e imprima a palavra usando cout.
 
-    char frase[20], palavra[20], maiorPalavra[20], menorPalavra[10];
+    char frase[20], palavra[20], maiorPalavra[20];
     int lenVetor = sizeof(frase) / sizeof(frase[0]);
-    int numeroPalavra = 0, tamanhoMaior = 0, tamanhoMenor = 20;
+    int numeroPalavra = 0, tamanhoMaior = 0;
     int i, j, tamanhoPalavra;
 
     cout << "Insira uma pequena frase: ";
@@ -426,39 +426,256 @@ void encontraMaiorPalavra(){
     }
     
     for(i = 0; i < lenVetor; i++){                               // percorre a frase
-        j = 0;                                                   //reinicia a posicao do array da palavra a cada loop                   
-        while((frase[i] != ' ') && (frase[i+1] != '\0')){       // percorre a palavra atual
-            palavra[j] = frase[i];                              // atribui os caracteres de frase para a palavra enquanto nao achar um espaco ou o final    
+        j = 0;                                                   // reinicia a posicao do array da palavra a cada loop                   
+        while((frase[i] != ' ') && (frase[i+1] != '\0')){        // percorre a palavra atual
+            palavra[j] = frase[i];                               // atribui os caracteres de frase para a palavra enquanto nao achar um espaco ou o final    
             i++;                                            
             j++;
         }
-
-        if(j > 0){                                          // evita que palavra receba o cacacter de final string na primeira posicao
-            palavra[j] = '\0';                              // a palavra atual recebe o finalizador de string
-        }
+                                           
+        palavra[j] = '\0';                                  // a palavra atual recebe o finalizador de string
         tamanhoPalavra = strlen(palavra);                   // pega o tamanho da palavra atual
         
         if(tamanhoPalavra > tamanhoMaior){                  // verifica se a palavra atual é maior que a maior anterior
             tamanhoMaior = tamanhoPalavra;                  // se for maior recebe o tamanho da palavra atual a armazena o tamanho atual como maior
             strcpy(maiorPalavra, palavra);                  // e aloca a palavra na variavel de maiorPalavra
-        } 
-        if(tamanhoPalavra < tamanhoMenor){                  // verifica se a palavra atual é menor que a menor anterior
-            tamanhoMenor = tamanhoPalavra;                  // se for menor recebe o tamanho da palavra atual a armazena o tamanho atual como menor                  
-            strcpy(menorPalavra, palavra);                  // e aloca a palavra na variavel de menorPalavra
         }
     }
 
     cout << endl;
     cout << "Frase Inserida: " << frase << endl;
-    cout << "-> possui " << numeroPalavra << " palavras;" << endl;
+    cout << "-> possui " << numeroPalavra << " palavra(s);" << endl;
     cout << "-> a MAIOR palavra da frase eh: \"" << maiorPalavra << "\" e possui " << tamanhoMaior << " letras;" << endl;
-    cout << "-> a MENOR palavra da frase eh: \"" << menorPalavra << "\" e possui " << tamanhoMenor << " letras;" << endl;
-    cout << endl;
+}
+
+/*
+========================================
+Exercícios condicionais em C++
+========================================
+*/
+
+void verificaParidade(int num){
+    // Exercício 01
+    // Escreva um programa em C++ que solicite ao usuário para digitar um número inteiro. 
+    // Em seguida, o programa deve verificar se o número é par e imprimir "Par" se for verdadeiro, e "Ímpar" se for falso. 
+    // Dica: Um número é par se o resto da divisão por 2 for igual a zero.
+
+    if(num % 2 == 0){
+        cout << "O numero eh par" << endl;
+    }else{
+        cout << "O numero eh impar" << endl;
+    }
+}
+
+void verificaPositivoNegativo(int num){
+    // Exercício 02
+    // Escreva um programa que peça ao usuário para inserir um número inteiro. 
+    // Se o número for positivo, imprima "Positivo"; caso contrário, imprima "Negativo". 
+    // Dica: Um número é positivo se for maior que zero.
+
+    if (num > 0) {
+        cout << "O numero eh positivo" << endl;
+    } else if (num < 0){
+        cout << "O numero eh negativo" << endl;
+    } else {
+        cout << "O numero eh zero" << endl;
+    }
+}
+
+void verificaSeEMultiplo(int num){
+    // Exercício 03
+    // Crie um programa que solicite ao usuário para inserir um número inteiro. 
+    // Se o número for múltiplo de 3 e 5 ao mesmo tempo, imprima "É múltiplo de 3 e 5"; caso contrário, imprima "Não é múltiplo de 3 e 5". 
+    // Dica: Um número é múltiplo de 3 e 5 se for divisível por ambos.
+
+    if(num % 15 == 0){
+        cout << "O numero eh multiplo de 3 e 5" << endl;
+    }else{
+        cout << "O numero nao eh multiplo de 3 e 5" << endl;
+    }
+}
+
+void verificaTipoTriangulo(int x, int y, int z){
+    // Exercício 04
+    // Escreva um programa que solicite ao usuário para inserir três números inteiros representando os lados de um triângulo. 
+    // O programa deve classificar o triângulo como "Equilátero" se todos os lados forem iguais, 
+    // "Isósceles" se dois lados forem iguais, ou "Escaleno" se todos os lados forem diferentes. 
+    // Dica: Um triângulo é equilátero se todos os lados forem iguais.
+
+    if (x == y && x == z) {
+        cout << "Triangulo Equilatero" << endl;
+    } if ((x == y && x != z) || (x == z && x != y) || (y == z && y != x)){
+        cout << "Triangulo Isoceles" << endl;
+    } else if (x != y && x != z) {
+        cout << "Triangulo Escaleno" << endl;
+    }
+}
+
+int calculadoraSimples(int x, int y, char op){
+    // Exercício 05
+    // Crie um programa que solicite ao usuário para inserir dois números e uma operação matemática (+, -, *, /). 
+    // O programa deve executar a operação e imprimir o resultado. 
+    // Dica: Você pode usar uma instrução switch para realizar a operação selecionada.
+
+    switch (op){
+        case '+': return x + y; break;
+        case '-': return x - y; break;
+        case '*': return x * y; break;
+        case '/': if(y != 0){ return x / y; }else{ cout << "Não Existe Divisão por 0" << endl; return -1; } break;
+        case '%': return x % y; break;
+        default: cout << "Nao aceitamos essa operacao" << endl; return -1; break;
+    }
+}
+
+void verificaBissexto(int ano){
+    // Exercício 06
+    // Escreva um programa que solicite ao usuário para inserir um ano e verifique se é um ano bissexto ou não. 
+    // Imprima "Ano bissexto" se for verdadeiro e "Não é ano bissexto" caso contrário. 
+    // Dica: Um ano é bissexto se for divisível por 4 e não for divisível por 100, exceto se também for divisível por 400.
+    
+    if ((ano % 4 == 0 && ano % 100 != 0) || ano % 400 == 0){
+        cout << "Eh um ano bissexto" << endl;
+    } else {
+        cout << "Nao eh um ano bissexto" << endl;
+    }
+}
+
+void converteTemperatura(){
+    // Exercício 07
+    // Crie um programa que pergunte ao usuário se deseja converter Celsius para Fahrenheit ou Fahrenheit para Celsius. 
+    // Em seguida, solicite a temperatura e faça a conversão, imprimindo o resultado. 
+    // Dica: Use fórmulas de conversão apropriadas: C = (F - 32) / 1.8 e F = (C * 1.8) + 32.
+
+    int op;
+    float temp;
+
+    while (op != 0){
+        cout << "1 - Celcius para Fahrenheit;" << endl;
+        cout << "2 - Fahrenheit para Celcius;" << endl;
+        cout << "0 - Fim Programa;" << endl;
+        cin >> op;
+
+        if (op == 1){
+            cout << "Entre com a temperatura em graus Celsius: ";
+            cin >> temp;
+            temp = (temp * 1.8) + 32;
+            cout << "Conversao: " << temp << "°F" << endl;
+        }
+        if (op == 2){
+            cout << "Entre com a temperatura em graus Fahrenheit: ";
+            cin >> temp;
+            temp = (temp - 32) / 1.8;
+            cout << "Conversao: " << temp << "°C" << endl;
+        }
+    }
+}
+
+void calculaIMC(float altura, float peso){
+    // Exercício 08
+    // Escreva um programa em C++ que solicite ao usuário inserir sua altura em metros e seu peso em quilogramas. 
+    // O programa calculará o IMC (Índice de Massa Corporal) com base nessas informações e imprimirá o resultado, 
+    // juntamente com a categoria correspondente de acordo com a tabela de classificação padrão.
+
+    float imc;
+    imc = peso / (altura * altura) ;
+    if (imc < 18.5){
+        cout << "Abaixo do Peso" << endl;
+    }
+    if (imc >= 18.5 && imc < 25){
+        cout << "Peso Normal" << endl;
+    }
+    if (imc >= 25 && imc < 30){
+        cout << "Sobrepeso" << endl;
+    }
+    if (imc >= 30){
+        cout << "Obeso" << endl;
+    }
+}
+
+void verificaQuadrante(int x, int y){
+    // Exercício 09
+    // Escreva um programa que solicite ao usuário para inserir as coordenadas (x, y) de um ponto no plano cartesiano. 
+    // O programa deve determinar e imprimir em qual quadrante o ponto está localizado. 
+    // Dica: Use condicionais if e operadores lógicos para verificar em qual quadrante o ponto está. 
+
+    if(x > 0 && y > 0){
+        cout << "1° Quadrante" << endl;
+    }
+    if(x < 0 && y > 0){
+        cout << "2° Quadrante" << endl;
+    }
+    if(x < 0 && y < 0){
+        cout << "3° Quadrante" << endl;
+    }
+    if(x > 0 && y < 0){
+        cout << "4° Quadrante" << endl;
+    }
+    if(x == 0 && y == 0){
+        cout << "Origem" << endl;
+    }
+}
+
+void verificaSaque(int saque){
+    // Exercício 10
+    // Escreva um programa em C++ que serve como verificação de saldo em um banco. 
+    // Defina uma variável para ser o saldo do cliente e peça que ele digite a quantia que quer retirar no caixa. 
+    // O algoritmo deve verificar se o cliente possui esse saldo. Se sim, escreva na tela que pode fazer uma retirada,
+    // se não avise que o saldo é menor que o valor solicitado.
+
+    int saldo = 1000;
+   
+    if(saque < 0 || saque > saldo){
+        cout << "Valor Invalido" << endl;
+    } else {
+        cout << "Saque Realizado!" << endl;
+        cout << "Saldo Restante: R$ " << saldo-saque << endl;
+    }
+}
+
+void verificaLeads(int leads){
+    // Exercício 11
+    // Escreva um programa em C++ que recebe do usuário um número de leads que a empresa recebeu nesse dia e verifica se a quantidade é baixa (5 ou menos), 
+    // esperada (6 a 10) ou alta (11+) e escreve na tela essa indicação.
+
+    if(leads <= 5){
+        cout << "Qauntidade baixa" << endl;
+    } else if (6 <= leads <= 10){
+        cout << "Qauntidade Esperada" << endl;
+    } else if (leads > 11){
+        cout << "Qauntidade Alta" << endl;
+    } else {
+        cout << "Invalido" << endl;
+    }
+}
+
+void verificaAprovacao(float nota1, float nota2, float nota3, float presenca){
+    // Exercício 12
+    // Crie um algoritmo em C++ que recebe 3 notas de um aluno, junto com a sua porcentagem de presença na cadeira, 
+    // e deve fazer a média das notas do aluno. Se for acima de 7 o aluno está aprovado, se for abaixo de 7 mas acima de 5 o aluno está em recuperação,
+    // se for abaixo de 5 o aluno reprovou. E se o aluno tiver 100% de presença e nota para aprovação deve imprimir "Aprovado" e um parabéns. 
+    // Se o aluno tiver 75% de presença e nota para aprovação deve imprimir "Aprovado". Se o aluno tiver menos de 75% de presença, 
+    // mesmo que tenha nota para aprovação, deve retornar "Reprovado".
+
+    float media = (nota1 + nota2 + nota3) / 3;
+
+    if (media >= 7){
+        if (presenca == 100) {
+            cout << "Aprovado! Parabens!" << endl;
+        } else if (presenca >= 75 && presenca < 100) {
+            cout << "Aprovado" << endl;
+        } else {
+            cout << "Reprovado" << endl;
+        }
+    } else if (media >= 5 && media < 7){
+        cout << "Recuperacao" << endl;
+    } else {
+        cout << "Reprovado" << endl;
+    }
 }
 
 int main(){
-    // Exercícios sobre Strings e Arrays em C++
-    imprimeNome();
+    // Exercícios sobre Strings e Arrays em C++ 
+    /*imprimeNome();
     cout << endl;
     imprimeVogal();
     cout << endl;
@@ -495,8 +712,99 @@ int main(){
     contaPalavras();
     cout << endl;
     encontraMaiorPalavra();
+    cout << endl;*/
+
+    // Exercícios condicionais em C++
+    int *num1 = new int;
+    cout << "Entre com um numero inteiro: ";
+    cin >> *num1;
+    verificaParidade(*num1);
     cout << endl;
 
-    //
+    cout << "Entre com um numero inteiro: ";
+    cin >> *num1;
+    verificaPositivoNegativo(*num1);
+    cout << endl;
+
+    cout << "Entre com um numero inteiro: ";
+    cin >> *num1;
+    verificaSeEMultiplo(*num1);
+    cout << endl;
+
+    int *num2 = new int; 
+    int *num3 = new int; 
+    cout << "Entre com o primeiro lado: ";
+    cin >> *num1;
+    cout << "Entre com o segundo lado: ";
+    cin >> *num2;
+    cout << "Entre com o terceiro lado: ";
+    cin >> *num3;
+    verificaTipoTriangulo(*num1, *num2, *num3);
+    cout << endl;
+    
+    int *resultado = new int;
+    char *op = new char; 
+    cout << "Insira o primeiro numero: ";
+    cin >> *num1;
+    cout << "Insira o segundo numero: ";
+    cin >> *num2;
+    cout << "Informe a operacao matematica: ";
+    cin >> *op;
+    *resultado = calculadoraSimples(*num1, *num2, *op);
+    cout << "Resultado: " << *resultado << endl;
+    cout << endl;
+
+    cout << "Entre com um ano: ";
+    cin >> *num1;
+    verificaBissexto(*num1);
+    cout << endl;
+
+    converteTemperatura();
+    cout << endl;
+    
+    float *altura = new float;
+    float *peso = new float;
+    cout << "Entre com sua altura em metros: ";
+    cin >> *altura;
+    cout << "Entre com seu peso em quilos: ";
+    cin >> *peso;
+    calculaIMC(*altura, *peso);
+    cout << endl;
+
+    cout << "Entre com X: ";
+    cin >> *num1;
+    cout << "Entre com Y: ";
+    cin >> *num2;
+    verificaQuadrante(*num1, *num2);
+    cout << endl;
+
+    cout << "Entre com um valor para o saque: ";
+    cin >> *num1;
+    verificaSaque(*num1);
+    cout << endl;
+
+    cout << "Entre com o numero de Leads diarios: ";
+    cin >> *num1;
+    verificaLeads(*num1);
+    cout << endl;
+
+    float *nota1 = new float;
+    float *nota2 = new float;
+    float *nota3 = new float;
+    float *presenca = new float;
+    cout << "Entre com a primeira nota: ";
+    cin >> *nota1;
+    cout << "Entre com a segunda nota: ";
+    cin >> *nota2;
+    cout << "Entre com a terceira nota: ";
+    cin >> *nota3;
+    cout << "Entre com a presenca em porcentagem: ";
+    cin >> *presenca;
+    verificaAprovacao(*nota1, *nota2, *nota3, *presenca);
+    cout << endl;
+
+    delete num1, num2, num3, resultado;
+    delete altura, peso;
+    delete op;
     return 0;
 }
