@@ -717,299 +717,94 @@ void verificaAprovacaoComplexa(float nota1, float nota2, float nota3, float pres
 
 /*
 ========================================
-Exercícios sobre Strings e Arrays em C++
+Exercícios sobre Loop e Arrays em C++
 ========================================
 */
 
-void exibeNomeComString(){
+void imprimePercorrendoArray(){
     // Exercicio 01
-    // Declare uma variável do tipo String chamada nome e armazene seu nome nela. Imprima o valor de nome usando cout.
+    // Declare um array de inteiros com 5 elementos e preencha-o com valores de sua escolha. 
+    // Em seguida, utilize um loop for para imprimir cada elemento do array no terminal.
 
-    string nome;
-
-    cout << "Entre com seu nome: ";
-    getline(cin, nome);
-    cout << "Nome armazenado: " + nome << endl;
+    int numeros[5] = {23, 56, 999, 3, 77};
+    int tam = sizeof(numeros) / sizeof(numeros[3]);
+    
+    for(int i = 0; i < tam; i++){
+        cout << numeros[i] << endl;
+    }
 }
 
-void imprimeVogaisDoArray(){
+void percorreArrayComWhile(){
     // Exercicio 02
-    // Declare um array de caracteres vogais com 5 posições. Insira manualmente as vogais ('a', 'e', 'i', 'o', 'u') nas posições do array. 
-    // Imprima cada vogal em uma linha usando cout.
+    // Declare um array de caracteres com 6 elementos e preencha-o com letras do alfabeto. 
+    // Utilize um loop while para imprimir cada elemento do array no terminal.
 
-    char vogais[5];
-    int len = sizeof(vogais) / sizeof(vogais[0]);
-
-    cout << "Insira as vogais no array:" << endl;
-    for(int i = 0; i < len; i++){
-        cout << "Posicao " << i << ": ";
-        cin >> vogais[i];
-    }
-    cout << endl;
-    for(int i = 0; i < len; i++){
-        cout << "Posicao " << i << ": " << vogais[i] << endl;
+    char letras[6] = {'L', 'y', 'J', 'K', 'x', 'g'};
+    int tam = sizeof(letras) / sizeof(letras[0]);
+    int i = 0;
+    
+    while(i < tam){
+        cout << letras[i] << endl;
+        i++;
     }
 }
 
-void verificaVogalComArray(){
-    //Exercicio 03
-    // Declare uma variável do tipo String chamada letra. Leia um caractere do usuário usando cin e armazene-o em letra. 
-    // Verifique se letra é uma vogal usando a estrutura if e imprima uma mensagem informando se é ou não.
+void imprimeNumerosParesDoArray(){
+    // Exercicio 03
+    // Declare um array de inteiros com 7 elementos e preencha-o com números de sua escolha. 
+    // Em seguida, utilize um loop for para imprimir apenas os números pares do array.
 
-    string letra;
-
-    cout << "Insira um caractere: ";
-    cin >> letra;
-
-    if(letra == "a" || letra == "A" || letra == "e" || letra == "E" || letra == "i" || letra == "I" || letra == "o" || letra == "O" || letra == "u" || letra == "U"){
-        cout << "O caractere inserido eh uma vogal!" << endl;
-    } else {
-        cout << "O caractere inserido NAO eh uma vogal!" << endl;
+    int numeros[7] = {23, 56, 999, 3, 77, 88, 1496};
+    int tam = sizeof(numeros) / sizeof(numeros[0]);
+    
+    for(int i = 0; i < tam; i++){
+        if(numeros[i] % 2 == 0){
+            cout << numeros[i] << endl;
+        } 
     }
 }
 
-void ImprimePalvaraDeUmArray(){
+void imprimeValorMaiorQueCinco(){
     // Exercicio 04
-    // Declare um array de caracteres palavra com 10 posições. Leia uma palavra do usuário usando cin e armazene-a em palavra. 
-    // Imprima a palavra usando cout.
+    // Declare um array de floats com 8 elementos e preencha-o com valores decimais. 
+    // Utilize um loop while para imprimir apenas os valores maiores que 5 do array.
 
-    char palavra[10];
-
-    cout << "Entre com uma palavra: ";
-    cin >> palavra;
-    cout << "Valor do array palavra: " << palavra << endl;
+    float numeros[8] = {23.56, 56.78, 999.3, 3.33333, 77.876752437, 88.1212, 1496.2, 3.1415926535};
+    int tam = sizeof(numeros) / sizeof(numeros[0]);
+    
+    for(int i = 0; i < tam; i++){
+        if(numeros[i] > 5){
+            cout << numeros[i] << endl;
+        } 
+    }
 }
 
-void imprimeFraseDeUmArray(){
+void exibeValoresDoArray(){
     // Exercicio 05
-    // Declare um array de caracteres frase com 20 posições. 
-    // Leia uma frase do usuário usando cin e armazene-a em frase. Imprima a frase usando cout.
-
-    string frase;
-
-    cout << "Entre com uma frase: ";
-    getline(cin, frase);
-    cout << "Frase: " << frase << endl;
-}
-
-void imprimeNumerosDeUmArray(){
-    // Exercicio 06
-    // Declare um array de caracteres numeros com 10 posições. 
-    // Armazene manualmente os números de 1 a 10 nas posições do array. 
-    // Imprima os números pares do array em linhas separadas usando cout.
+    // Declare um array de inteiros vazio com espaço para 10 elementos. 
+    // Peça ao usuário para inserir valores para cada elemento do array. 
+    // Em seguida, utilize um loop for para imprimir os valores do array no terminal.
 
     int numeros[10];
-    int len = sizeof(numeros) /sizeof(numeros[0]);
-
-    cout << "Preencha o Array" << endl;
-    for(int i =0; i < len; i++){
-        cout << "Posicao " << i << ": ";
+    int tam = sizeof(numeros) / sizeof(numeros[0]);
+    
+    cout << "Entre com um valores para o array:" << endl;
+    for(int i = 0; i < tam; i++){
+        cout << i << " = ";
         cin >> numeros[i];
     }
-    cout << endl;
-    for(int i =0; i < len; i++){
-        if(numeros[i] % 2 == 0){
-            cout << "Par na Posicao " << i << ": " << numeros[i] << endl;
-        }
+
+    for(int i = 0; i < tam; i++){
+        if(numeros[i] > 5){
+            cout << numeros[i] << endl;
+        } 
     }
 }
 
-void imprimeFrutasDeUmArray(){
-    // Exercicio 07
-    // Declare um array de caracteres frutas com 5 posições. 
-    // Armazene manualmente os nomes de 5 frutas nas posições do array. 
-    // Imprima a fruta que está na posição 3 do array usando cout.
 
-    string frutas[5];
-    int len = sizeof(frutas) /sizeof(frutas[0]);
 
-    cout << "Preencha o Array com nomes de frutas:" << endl;
-    for(int i =0; i < len; i++){
-        cout << i+1 << "° Fruta: ";
-        cin >> frutas[i];
-    }
-    cout << "Fruta armazenada na 3° Posicao: " + frutas[2] << endl;
-}
 
-void imprimeCoresDoArray(){
-    // Exercicio 08
-    // Declare um array de caracteres cores com 7 posições. 
-    // Armazene manualmente os nomes de 7 cores nas posições do array. 
-    // Leia um número do usuário entre 1 e 7 usando cin. 
-    // Imprima a cor que está na posição informada pelo usuário usando cout.
 
-    string cores[7];
-    int len = sizeof(cores) /sizeof(cores[0]);
-    int posicao;
-
-    cout << "Preencha o Array com nomes de cores:" << endl;
-    for(int i =0; i < len; i++){
-        cout << "Posicao "<< i << ": "; 
-        cin >> cores[i];
-    }
-    cout << "Pesquisa por cor na posicao: ";
-    cin >> posicao;
-    cout << "Cor armazenada na posicao " << posicao << ": " << cores[posicao] << endl;
-}
-
-void imprimeAnimaisDeUmArray(){
-    // Exercicio 09
-    // Declare um array de caracteres animais com 10 posições. 
-    // Armazene manualmente os nomes de 10 animais nas posições do array. 
-    // Leia um caractere do usuário usando cin. 
-    // Verifique se o caractere é a primeira letra de um animal do array. Se for, imprima o nome do animal completo.
-
-    string animais[10], caracter;
-    int len = sizeof(animais) /sizeof(animais[0]);
-    int found;
-
-    cout << "Preencha o Array com nomes de animais:" << endl;
-    for(int i =0; i < len; i++){
-        cout << "Posicao "<< i << ": "; 
-        cin >> animais[i];
-    }
-    cout << "Entre com um caracter: ";
-    cin >> caracter;
-    cout << endl;
-    for(int i =0; i < len; i++){
-        found = animais[i].find(caracter);
-        if(found == 0){
-            cout << "Posicao "<< i << ": " << animais[i] << endl;
-        }
-    }
-}
-
-void imprimeDiasDeUmArray(){
-    // Exercicio 10
-    // Declare um array de caracteres dias com 7 posições. 
-    // Armazene manualmente os nomes dos 7 dias da semana nas posições do array. 
-    // Leia um número do usuário entre 1 e 7 usando cin. 
-    // Imprima o dia da semana que está na posição informada pelo usuário usando cout.
-
-    string dias[7]; 
-    int len = sizeof(dias) /sizeof(dias[0]); // esse macete dos sizeoff só funciona se o array (vetor) de string tiver seu tamanho especificado KKKKK,                                
-    int indice;                              // se não retorna o tamanho do ponteiro que aponta para o buffer da string.
-    cout << len << endl;
-    cout << "Preencha o Array com os dias da semana:" << endl;
-    for(int i =0; i < len; i++){
-        cout << "Posicao "<< i << ": "; 
-        cin >> dias[i];
-    }
-    cout << "Entre com o indice: ";
-    cin >> indice;
-    cout << endl;
-    cout << "O dia Selecionado eh: " << dias[indice] << endl;
-}
-
-void comparaDuasPalavras(){
-    // Exercicio 11
-    // Declare um array de caracteres palavra1 e palavra2 com 10 posições cada. 
-    // Leia duas palavras do usuário usando cin e armazene-as em palavra1 e palavra2. 
-    // Compare as duas palavras usando a estrutura if e imprima qual palavra é maior em ordem alfabética.
-
-    string palavra1, palavra2;
-   
-    cout << "Entre com a palavra 1: ";
-    cin >> palavra1;
-    cout << "Entre com a palavra 2: ";
-    cin >> palavra2;
-
-    if(palavra1.compare(palavra2) == 0){
-        cout << "As Strings sao iguais." << endl;
-    } else if(palavra1.compare(palavra2) < 0){
-        cout << "A primeira String eh menor em ordem alfabetica." << endl;
-    } else if(palavra1.compare(palavra2) > 0){
-        cout << "A primeira String eh maior em ordem alfabetica." << endl;
-    } else {
-        cout << "Erro!" << endl;
-        return -1;
-    }
-    // cout << palavra1.compare(palavra2) << endl;
-}
-
-void VerificaSeEVogalComArray(){
-    // Exercicio 12
-    // Declare um array de caracteres frase com 20 posições. 
-    // Leia uma frase do usuário usando cin e armazene-a em frase. 
-    // Conte o número de vogais na frase e imprima o resultado usando cout.
-
-    string frase;
-    char vogais[] = {'A', 'a', 'E', 'e', 'I', 'i', 'O', 'o', 'U', 'u'};
-    int numeroVogais = 0;
-    int lenVogais = sizeof(vogais) / sizeof(vogais[0]);
-   
-    cout << "Entre com uma frase: "; // input de usuario
-    getline(cin, frase);
-    int lenFrase = frase.size();
-    
-    for(int i = 0; i < lenFrase; i++){
-        for(int j = 0; j < lenVogais; j++){
-            if(frase[i] == vogais[j]){
-                numeroVogais++;
-                cout << numeroVogais << " - vogal na posicao " << i << " = " << frase[i] << endl;
-            }
-        }
-    }
-    cout << "Na frase inserida existem " << numeroVogais << " vogais!" << endl; // output
-}
-
-void encontraLetraA(){
-    // Exercicio 13
-    // Declare um array de caracteres texto com 50 posições. 
-    // Leia um texto do usuário usando cin e armazene-o em texto. 
-    // Encontre a primeira ocorrência da letra 'a' no texto e imprima a posição da letra.
-
-    char texto[50];
-    int len = sizeof(texto) / sizeof(texto[0]);
-
-    cout << "Insira uma frase: ";
-    cin >> texto;
-
-    for(int i = 0; i < len; i++){
-        if(texto[i] == 'a' || texto[i] == 'A'){
-            cout << "Letra A encontrada na posicao " << i << endl;
-        }
-    }
-}
-
-void invertePalavra(){
-    // Exercicio 14
-    // Declare um array de caracteres palavra com 10 posições. 
-    // Leia uma palavra do usuário usando cin e armazene-a em palavra. 
-    // Inverta a ordem dos caracteres da palavra e imprima a palavra invertida usando cout.
-
-    string palavra;
-
-    cout << "Insira uma pequena palavra: ";
-    cin >> palavra;
-    reverse(palavra.begin(), palavra.end()); // função reverse(), reverte a stream que é passada como parâmetro. 
-    cout << "A palavra inserida foi invertida: " + palavra << endl;
-}
-
-void 
-    // Declare um array de caracteres frase com 20 posições. 
-    // Leia uma frase do usuário usando cin e armazene-a em frase. 
-    // Substitua todas as vogais da frase por '*'. 
-    // Imprima a frase com as vogais substituídas usando cout.
-
-    string frase;
-    char vogais[] = {'A', 'a', 'E', 'e', 'I', 'i', 'O', 'o', 'U', 'u'};
-    int len; 
-    int lenV = sizeof(vogais) / sizeof(vogais[0]); // mecanismo de sizeof para pegar o tamanho fo vetor
-
-    cout << "Insira uma pequena frase: ";
-    getline(cin, frase);
-    len = frase.size(); // funcao size para pegar o tamanho de uma String, sizeoff só funciona na string se seu tamanho estiver especificado ([])
-    
-    for(int i = 0; i < len; i++){
-        for(int j = 0; j < lenV; j++){
-            if(frase[i] == vogais[j]){
-                frase[i] = '*';
-            }
-        }
-    } 
-    cout << "A frase inserida foi modificada: " + frase << endl;
-}
 
 int main(){
     // Exercícios sobre Strings e Arrays em C++ 
@@ -1050,10 +845,10 @@ int main(){
     contaPalavras();
     cout << endl;
     encontraMaiorPalavra();
-    cout << endl;
+    cout << endl;*/
 
     // Exercícios condicionais em C++
-    int *num1 = new int;
+    /*int *num1 = new int;
     cout << "Entre com um numero inteiro: ";
     cin >> *num1;
     verificaParidade(*num1);
@@ -1152,8 +947,8 @@ int main(){
     verificaAprovacaoComplexa(*nota1, *nota2, *nota3, *presenca);
     cout << endl;*/
 
-    // Exercícios sobre Arrays em C++
-    exibeNomeComString();
+    // Exercícios sobre Loops Arrays em C++
+    
 
     /*delete num1, num2, num3, resultado;
     delete altura, peso, nota1, nota2, nota3, presenca;
