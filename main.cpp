@@ -801,14 +801,174 @@ void exibeValoresDoArray(){
     }
 }
 
+void tamanhoDoArray(){
+    // Exercicio 06
+    // Declare um array de caracteres com 5 elementos e preencha-o com caracteres de sua escolha. 
+    // Utilize uma função para imprimir o tamanho total do array no terminal.
 
+    // para ver o tamanho de arrays, arrays de caracteres e arrays de strings
+    char caracteres[5] = {'a', 'b', 'c', 'd', 'd'};
+    int tam = sizeof(caracteres) / sizeof(caracteres[0]);
 
+    cout << "Tamanho do array \"caracteres\": " << tam << endl;
 
+    // para ver o tamanho de strings
+    string palavra = {"Hello, World!"};
+    int len = palavra.size();
+    cout << "Tamanho da string \"palavra\": " << len << endl;
+}
 
+void manipulaArray(){
+    // Exercicio 07
+    // Dado o array de inteiros: {3, 7, 9, 12, 4, 6, 8, 10}, imprima no terminal:
+    //     O terceiro elemento do array.
+    //     A soma do sexto elemento com o oitavo elemento.
+    //     A diferença entre o segundo elemento e o primeiro.
+    //     O quarto elemento se for maior que 6.
+    //     O último elemento se o primeiro for par.
+    //     O primeiro elemento se a soma do quarto com o oitavo for maior que 22.
+
+    int numeros[] = {3, 7, 9, 12, 4, 6, 8, 10}; // se o array for inicializado com valores e sem tamanho ele atribuirá a quantidade de elementos para seu tamanho
+                                    
+    cout << "Terceiro elemento do array: " << numeros[2] << endl;
+    cout << "A soma do sexto elemento com o oitavo elemento: " << numeros[5] + numeros[7] << endl;
+    cout << "A diferenca entre o segundo elemento e o primeiro: " << numeros[1] - numeros[0] << endl;
+    
+    if(numeros[3] > 6){
+        cout << "O quarto elemento se for maior que 6: " << numeros[3] << endl;
+    }
+
+    if(numeros[0] % 2 == 0){
+        cout << "O ultimo elemento se o primeiro for par: " << numeros[3] << endl;
+    }
+
+    if(numeros[3] + numeros[7] > 22){
+        cout << "O primeiro elemento se a soma do quarto com o oitavo for maior que 22: " << numeros[3] << endl;
+    }
+}
+
+void mediaElementosDoArray(){
+    // Exercicio 08
+    // Crie um programa que declare um array de floats com 10 elementos. 
+    // Solicite ao usuário que insira um valor para cada elemento do array. 
+    // Em seguida, calcule e imprima a média dos valores fornecidos pelo usuário.
+
+    float media;
+    float notas[10];
+    int tam = sizeof(notas) / sizeof(notas[0]);
+    
+    cout << "Entre com um valores para o array:" << endl;
+    for(int i = 0; i < tam; i++){
+        cout << i << " = ";
+        cin >> notas[i];
+    }
+    for(int i = 0; i < tam; i++){
+        media += notas[i];
+    }
+    media = media / tam;
+    cout.precision(3);
+    cout << "Media das notas inseridas: " << media << endl;
+}
+
+void somaElementosDoArray(){
+    // Exercicio 09
+    // Declare um array de inteiros com 10 elementos e preencha-o com números de sua escolha. 
+    // Utilize um loop for para calcular e imprimir a soma de todos os elementos do array.
+
+    int valores[10];
+    int tam = sizeof(valores) / sizeof(valores[0]);
+    int soma = 0;
+
+    cout << "Entre com um valores para o array:" << endl;
+    for(int i = 0; i < tam; i++){
+        cout << i << " = ";
+        cin >> valores[i];
+    }  
+
+    for(int i = 0; i < tam; i++){
+        soma += valores[i];
+    }
+    cout << "Soma dos valores inseridos: " << soma << endl;
+}
+
+void exibeSelecionados(){
+    // Exercicio 10
+    // Declare um array de inteiros com 8 elementos e preencha-o com valores de sua escolha. 
+    // Utilize um loop for para imprimir apenas os números que são múltiplos de 3 e maiores que 10 do array.
+
+    int valores[8];
+    int tam = sizeof(valores) / sizeof(valores[0]);
+    
+    cout << "Entre com um valores para o array:" << endl;
+    for(int i = 0; i < tam; i++){
+        cout << i << " = ";
+        cin >> valores[i];
+    }
+
+    cout << "valores inseridos que sao multiplos de 3 e maiores que 10: " << endl;
+    for(int i = 0; i < tam; i++){
+        if(valores[i] % 3 == 0 && valores[i] > 10){
+            cout << "pos " << i << " = " << valores[i] << endl;    
+        }
+    }
+}
+
+void encontraMinimoEMaximo(){
+    // Exercicio 11
+    // Declare um array de inteiros com 12 elementos e preencha-o com números de sua escolha. 
+    // Em seguida, crie um programa que utilize loops for para encontrar e imprimir o valor máximo e o valor mínimo do array.
+
+    int valores[12];
+    int valorMaximo = valores[0], valorMinimo = valores[0];
+    int tam = sizeof(valores) / sizeof(valores[0]);
+    
+    cout << "Entre com valores para o array:" << endl;
+    for(int i = 0; i < tam; i++){
+        cout << i << " = ";
+        cin >> valores[i];
+    }
+    
+    for(int i = 0; i < tam; i++){
+        if(valores[i] >= valorMaximo){
+            valorMaximo = valores[i];
+        }
+        if(valores[i] <= valorMinimo){
+            valorMinimo = valores[i];
+        }
+    }
+    cout << "Maior valor no array = " << valorMaximo << endl;
+    cout << "Menor valor no array = " << valorMinimo << endl;
+}
+
+void calculaMediaPonderada(){
+    // Exercicio 12
+    // Declare dois arrays de floats, um para armazenar as notas e outro para armazenar os pesos correspondentes. 
+    // Ambos os arrays devem ter 5 elementos. Solicite ao usuário que insira notas para as notas e os pesos. 
+    // Em seguida, calcule e imprima a média ponderada das notas, 
+    // onde a média ponderada é calculada pela soma das multiplicações de cada nota pelo seu peso correspondente, 
+    // dividida pela soma total dos pesos.
+
+    float notas[5], pesos[5];
+    float numerador = 0, denominador = 0;
+    int tam = sizeof(notas) / sizeof(notas[0]);
+    
+    cout << "Entre com as notas e o peso das notas para o array (no formato: nota espaco peso):" << endl;
+    for(int i = 0; i < tam; i++){
+        //cin.ignore();
+        cout << "pos " << i << " = ";
+        cin >> notas[i] >> pesos[i];
+    }
+
+    for(int i = 0; i < tam; i++){
+        numerador += notas[i] * pesos[i];
+        denominador += pesos[i];
+    }
+    cout << "Media ponderada dos valores inseridos = " << numerador / denominador << endl;
+}
 
 int main(){
     // Exercícios sobre Strings e Arrays em C++ 
-    /*imprimeNome();
+    imprimeNome();
     cout << endl;
     imprimeVogal();
     cout << endl;
@@ -845,10 +1005,10 @@ int main(){
     contaPalavras();
     cout << endl;
     encontraMaiorPalavra();
-    cout << endl;*/
+    cout << endl;
 
     // Exercícios condicionais em C++
-    /*int *num1 = new int;
+    int *num1 = new int;
     cout << "Entre com um numero inteiro: ";
     cin >> *num1;
     verificaParidade(*num1);
@@ -945,13 +1105,38 @@ int main(){
     cout << "Entre com a presenca em porcentagem: ";
     cin >> *presenca;
     verificaAprovacaoComplexa(*nota1, *nota2, *nota3, *presenca);
-    cout << endl;*/
+    cout << endl;
 
     // Exercícios sobre Loops Arrays em C++
     
+    imprimePercorrendoArray();
+    cout << endl;
+    percorreArrayComWhile();
+    cout << endl;
+    imprimeNumerosParesDoArray();
+    cout << endl;
+    imprimeValorMaiorQueCinco();
+    cout << endl;
+    exibeValoresDoArray();
+    cout << endl;
+    tamanhoDoArray();
+    cout << endl;
+    manipulaArray();
+    cout << endl;
+    mediaElementosDoArray();
+    cout << endl;
+    somaElementosDoArray();
+    cout << endl;
+    exibeSelecionados();
+    cout << endl;
+    encontraMinimoEMaximo();
+    cout << endl;
+    calculaMediaPonderada();
+    cout << endl;
 
-    /*delete num1, num2, num3, resultado;
+    delete num1, num2, num3, resultado;
     delete altura, peso, nota1, nota2, nota3, presenca;
-    delete op;*/
+    delete op;
+
     return 0;
 }
